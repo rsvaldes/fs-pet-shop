@@ -122,7 +122,6 @@ describe('pets restfulExpressServer', () => {
         .expect(400, 'Bad Request', done);
     });
   });
-
   describe('PATCH method', () => {
     it('should update pets.json when given a complete pet object', (done) => {
       request(app)

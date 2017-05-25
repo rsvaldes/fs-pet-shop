@@ -23,7 +23,6 @@ function create (age,kind,name) {
     if (err){
       console.error(err);
     }
-    console.log(pet);
   });
 }
 
