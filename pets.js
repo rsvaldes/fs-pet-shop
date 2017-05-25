@@ -1,29 +1,30 @@
 var fs = require('fs');
+var pets = JSON.parse(fs.readFileSync('pets.json', 'utf8'));
 var arr = process.argv;
 var command = arr[2];
 
 function read(index) {
-  fs.readFile('pets.json', 'utf8', function(err, data) {
-      var content = JSON.parse(data);
-      if (index === 500) {
-        console.log(content);
-      }
-      if (content[index] !== undefined) {
-        console.log(content[index]);
-      }
-  });
+  if (index === 500) {
+    console.log(pets);
+  }
+  if (pets[index] !== undefined) {
+    console.log(pets[index]);
+  }
 }
+
 function create (age,kind,name) {
   var pet = {};
-  pet.age = Number.parseInt(age);
+  pet.age = Number(age);
   pet.kind = kind;
-  no = name;
-  var petsJSON = JSON.stringify(pet);
-  console.log(pet);
-  fs.writeFile('pets.json', petsJSON, 'utf8', function(err) {
-    if (err) throw err;
-  })
-  read(2);
+  pet.name = name;
+
+  pets.push(pet);
+  fs.writeFile('pets.json', JSON.stringify(pets), function (err){
+    if (err){
+      console.error(err);
+    }
+    console.log(pet);
+  });
 }
 
 
