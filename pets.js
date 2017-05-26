@@ -55,3 +55,4 @@ switch (command) {
     process.exit(1);
      break;
 }
+module.exports = pets;
