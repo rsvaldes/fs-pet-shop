@@ -8,7 +8,7 @@ const file = './pets.json';
 router.get('/pets',function(req,res,next){
   fs.readFile(file,'utf8',function(err,data){
     if(err) console.error(err);
-    pets = JSON.parse(data);
+    var pets = JSON.parse(data);
     res.status(200).send(pets);
   });
 });
@@ -16,7 +16,7 @@ router.get('/pets',function(req,res,next){
 router.get('/pets/:id',function(req,res,next){
   fs.readFile(file,'utf8',function(err,data){
     if(err) console.error(err);
-    pets = JSON.parse(data);
+    var pets = JSON.parse(data);
     var index = req.params.id;
     if (index < 0 || index >= pets.length) {
       res.set('Content-type', 'text/plain');
@@ -37,7 +37,7 @@ router.post('/pets',function(req,res,next){
   else {
     fs.readFile(file,'utf8',function(err,data){
       if(err) console.error(err);
-      pets = JSON.parse(data);
+      var pets = JSON.parse(data);
       var results = crud.create(pets,newPet);
       fs.writeFile(file,JSON.stringify(results),function(err){
         if(err) console.error(err);
@@ -50,7 +50,7 @@ router.post('/pets',function(req,res,next){
 router.patch('/pets/:id', function (req,res,next) {
   fs.readFile(file,'utf8',function(err,data){
     if(err) console.error(err);
-    pets = JSON.parse(data);
+    var pets = JSON.parse(data);
     var index = req.params.id;
     if (index < 0 || index >= pets.length) {
       res.set('Content-type', 'text/plain');

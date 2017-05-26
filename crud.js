@@ -2,19 +2,6 @@
 const fs = require('fs');
 
 var crud = {
-  read: function (file) {
-    fs.readFile(file,'utf8',function(err,data){
-      if(err) console.error(err);
-      return JSON.parse(data);
-    });
-  },
-
-  write: function (file,arr) {
-    fs.writeFile(file,JSON.stringify(arr),function(err){
-      if(err) console.error(err);
-    });
-  },
-
   create: function (arr,obj) {
     // var fileDataArray = read(file); //Get pets from pets.json
     var newValue = {}; //newPet object
