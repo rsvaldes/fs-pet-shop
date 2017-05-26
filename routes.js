@@ -67,6 +67,17 @@ router.patch('/pets/:id', function (req,res,next) {
   });
 });
 
-// router.delete();
+router.delete('/pets/:id',function (req,res,next) {
+  fs.readFile(file, 'utf8', function (err, data) {
+    if (err) console.error(err);
+    var pets = JSON.parse(data);
+    var index = req.params.id;
+    var removedPet = pets[index];
+    var results = crud.destroy(pets,index);
+    fs.writeFile(file,JSON.stringify(results), function (err) {
+      res.status(200).send(removedPet);
+    });
+  });
+});
 
 module.exports = router;

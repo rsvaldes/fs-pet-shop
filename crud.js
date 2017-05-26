@@ -21,8 +21,9 @@ var crud = {
     return arr;
   },
 
-  destroy: function () {
-
+  destroy: function (arr,index) {
+    arr.splice(index,1);
+    return arr;
   }
 };
 
