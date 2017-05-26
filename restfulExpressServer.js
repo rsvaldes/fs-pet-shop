@@ -1,11 +1,10 @@
+/* jshint esversion: 6 */
 const express = require('express');
 const app = express();
-const router = require('./methods.js');
-
-const pets = require('./pets.json');
-const petOps = require('./petOps.js');
+const router = require('./routes.js');
 
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 app.use(bodyParser.json());
 app.use(router);
