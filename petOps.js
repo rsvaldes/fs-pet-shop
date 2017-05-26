@@ -13,26 +13,30 @@ var ops = {
       }
     });
   },
-  update: function (age,kind,name,index) {
-    var pet = pets[index];
-    console.log('pet before', pet);
-    if (age) {
-      pet.age = Number(age);
+  update: function (body) {
+    var pet = pets[body.id];
+    for (var key in body) {
+      console.log(key);
+      pet[key] = body[key];
     }
-    if (kind) {
-      pet.kind = kind;
-    }
-    if (name) {
-      pet.name = name;
-    }
-    pets[index] = pet;
-    // fs.writeFile('pets.json', JSON.stringify(pets), function (err){
-    //   if (err){
-    //     console.error(err);
-    //   }
-    // });
-    console.log('pet after', pet);
-    // return pet;
+    // console.log('pet before', pet);
+    // if (kind) {
+    //   pet.kind = kind;
+    // }
+    // if (age) {
+    //   pet.age = Number(age);
+    // }
+    // if (name) {
+    //   pet.name = name;
+    // }
+    // pets[index] = pet;
+    fs.writeFile('pets.json', JSON.stringify(pets), function (err){
+      if (err){
+        console.error(err);
+      }
+    });
+    // console.log('pet after', pet);
+    return pet;
   }
 };
 
